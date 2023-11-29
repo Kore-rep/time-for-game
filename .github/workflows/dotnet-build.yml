@@ -20,9 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
-    - name: Install dependencies
-      run: dotnet add package Spectre.Console --version 0.48.0
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
+      env: 
+        ApiKey: ${{secrets.ESP_API_KEY}}
       run: dotnet build --configuration Release
